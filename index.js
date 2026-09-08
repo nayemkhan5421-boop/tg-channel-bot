@@ -1,6 +1,7 @@
-const { Telegraf } = require('telegraf');
-
-// ⚠️ আপনার bot token এখানে বসান
+git add .const { Telegraf } = 
+require('telegraf'); git commit -m "Add dummy 
+HTTP server for Render port binding"
+git push origin main// ⚠️ আপনার bot token এখানে বসান
 const BOT_TOKEN = '8832544765:AAFAMjyDZFOvBFGyfh1F_C7WqJMlXK6Irt0';
 
 // Admin এর Telegram user ID
@@ -51,6 +52,16 @@ bot.on('text', async (ctx) => {
 });
 
 bot.launch();
+
+const http = require('http');
+const PORT = process.env.PORT || 3000;
+
+http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('Bot is alive!');
+}).listen(PORT, () => {
+  console.log(`Dummy server running on port ${PORT} (for Render)`);
+});
 console.log('Bot is running...');
 
 // Graceful shutdown
